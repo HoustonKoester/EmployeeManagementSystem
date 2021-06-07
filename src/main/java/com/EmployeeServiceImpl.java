@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-
+import java.util.logging.Level;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class EmployeeServiceImpl implements EmployeeService{
-	
-private static List<Employee> employ = new ArrayList<Employee>() {
+	private static final Logger LOGGER = Logger.getLogger(UseEmployee.class.getName());
+static List<Employee> employ = new ArrayList<Employee>() {
 //default serial ID
 	private static final long serialVersionUID = 1L;
 	{
@@ -44,13 +46,7 @@ private static List<Employee> employ = new ArrayList<Employee>() {
 	}
 	//method uses employee id, future proofing for sql primary key
 	public Employee findByEmployeeNo(int empNo) {
-		Employee returnal = null;
-		for(Employee emp : employ) {
-			if(emp.getEmpNo() == empNo) {
-				returnal = emp;
-			}
-		}
-		return returnal;
+		return employ.stream().filter(e -> e.getEmpNo() == empNo).findFirst().orElse(null);
 	}
 
 	//void type, with no direct passed data, but asks for information to update employee
@@ -114,6 +110,7 @@ private static List<Employee> employ = new ArrayList<Employee>() {
 		}
 		if(flag == 1) { // flag for when no user is found
 			System.out.println("There was no user with the id: " + id);
+			LOGGER.log(Level.WARNING, "No employee found");
 		}
 		//s.close();
 	}
@@ -145,6 +142,7 @@ private static List<Employee> employ = new ArrayList<Employee>() {
 		}
 		if(flag ==1) {
 			System.out.println("There was no user with the id: " + id);
+			LOGGER.log(Level.WARNING, "No employee found");
 		}
 	}
 

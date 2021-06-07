@@ -1,10 +1,14 @@
 package com;
 
+
+import java.util.logging.Logger;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
 
 public class UseEmployee {
-
+	private static final Logger LOGGER = Logger.getLogger(UseEmployee.class.getName());
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		EmployeeServiceImpl esi = new EmployeeServiceImpl();
@@ -35,10 +39,12 @@ public class UseEmployee {
 				
 			case(2):
 				esi.addEmployee();
+				LOGGER.log(Level.INFO, "New Employee created");
 				break;
 				
 			case(3):
 				esi.updateEmployee();
+			LOGGER.log(Level.INFO, "Employee updated");
 				break;
 				
 			case(4):
@@ -50,6 +56,7 @@ public class UseEmployee {
 				}else {
 					System.out.println("The employee with ID number: " + id + " is : " + esi.findByEmployeeNo(id).toString());
 				}
+				
 				break;
 				
 			case(5):
@@ -65,6 +72,7 @@ public class UseEmployee {
 			
 			case(6):
 				esi.deleteEmployee();
+			LOGGER.log(Level.WARNING, "Employee deleted, ensure authenticity");
 				break;
 				
 			case(7):
@@ -73,6 +81,7 @@ public class UseEmployee {
 				System.exit(0);
 			default:
 				System.out.println("Command not recognized, enter a command from the menu below\n");
+				LOGGER.log(Level.WARNING, "Improper command selected");
 				
 			}
 
