@@ -8,6 +8,9 @@ public class Address {
 		City = city;
 		State = state;
 	}
+	public Address() {
+		// TODO Auto-generated constructor stub
+	}
 	public String getCity() {
 		return City;
 	}

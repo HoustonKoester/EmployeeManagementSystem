@@ -2,6 +2,9 @@ package com;
 
 
 import java.util.logging.Logger;
+
+import com.EmployeeServiceImpl.EmployeeNotFound;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -9,9 +12,10 @@ import java.util.logging.Level;
 public class UseEmployee {
 	private static final Logger LOGGER = Logger.getLogger(UseEmployee.class.getName());
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws EmployeeNotFound {
 		// TODO Auto-generated method stub
 		EmployeeServiceImpl esi = new EmployeeServiceImpl();
+		esi.init();
 		System.out.println("Welcome to the employee management system\n");
 		Scanner s = new Scanner(System.in);
 		int sw = 0; 
@@ -72,7 +76,6 @@ public class UseEmployee {
 			
 			case(6):
 				esi.deleteEmployee();
-			LOGGER.log(Level.WARNING, "Employee deleted, ensure authenticity");
 				break;
 				
 			case(7):

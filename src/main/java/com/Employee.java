@@ -12,6 +12,9 @@ public Employee(int empNo, String empName, double salary, Address address) {
 	Salary = salary;
 	this.address = address;
 }
+public Employee() {
+	// TODO Auto-generated constructor stub
+}
 public int getEmpNo() {
 	return empNo;
 }

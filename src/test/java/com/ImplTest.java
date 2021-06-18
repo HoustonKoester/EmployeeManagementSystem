@@ -13,12 +13,13 @@ class ImplTest {
 	@BeforeEach
 	void initEach() {
 		esi = new EmployeeServiceImpl();
+		esi.init();
 	}
 	
 	
 	@Test
 	void yearlySalary() {
-		assertEquals(14400, esi.calculateYearlySalary(1));
+		assertEquals(24000, esi.calculateYearlySalary(1));
 				
 	}
 	
